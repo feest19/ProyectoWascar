@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Proyecto2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Articulo">
+    <Key>
+      <PropertyRef Name="Idarticulo" />
+    </Key>
+    <Property Name="Idarticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Idcategoria" Type="Int32" />
+    <Property Name="Idpresentacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Idcategoria" />
+    </Key>
+    <Property Name="Idcategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Idcliente" />
+    </Key>
+    <Property Name="Idcliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_nacimiento" Type="DateTime" Precision="0" />
+    <Property Name="Tipo_documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Num_documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Detalle_ingreso">
+    <Key>
+      <PropertyRef Name="Iddetalle_ingreso" />
+    </Key>
+    <Property Name="Iddetalle_ingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Idingreso" Type="Int32" />
+    <Property Name="Idarticulo" Type="Int32" />
+    <Property Name="Precio_compra" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Precio_venta" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Stock_inicial" Type="Int32" />
+    <Property Name="Stock_actual" Type="Int32" />
+    <Property Name="Fecha_produccion" Type="DateTime" Precision="0" />
+    <Property Name="Fecha_vencimiento" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Detalle_venta">
+    <Key>
+      <PropertyRef Name="Iddetalle_venta" />
+    </Key>
+    <Property Name="Iddetalle_venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Idventa" Type="Int32" />
+    <Property Name="Iddetalle_ingreso" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio_venta" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Descuento" Type="Decimal" Precision="12" Scale="2" />
+  </EntityType>
+  <EntityType Name="Ingreso">
+    <Key>
+      <PropertyRef Name="Idingreso" />
+    </Key>
+    <Property Name="Idingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Idtrabajador" Type="Int32" />
+    <Property Name="Idproveedor" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Tipo_comprovante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Serie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correlativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Itbis" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Presentacion">
+    <Key>
+      <PropertyRef Name="Idpresentacion" />
+    </Key>
+    <Property Name="Idpresentacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="Idproveedor" />
+    </Key>
+    <Property Name="Idproveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Razon_social" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sector_comercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Num_documento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Trabajador">
+    <Key>
+      <PropertyRef Name="Idtrabajador" />
+    </Key>
+    <Property Name="Idtrabajador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_nacimiento" Type="DateTime" Precision="0" />
+    <Property Name="Num_documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Acceso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="Idventa" />
+    </Key>
+    <Property Name="Idventa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Idcliente" Type="Int32" />
+    <Property Name="Idtrabajador" Type="Int32" />
+    <Property Name="Fecha_venta" Type="DateTime" Precision="0" />
+    <Property Name="Tipo_comprobante" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Serie_comprobante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correlativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Itbis" Type="Decimal" Precision="4" Scale="2" />
+  </EntityType>
+  <EntityContainer Name="Proyecto2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Articuloes" EntityType="Self.Articulo" />
+    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Detalle_ingreso" EntityType="Self.Detalle_ingreso" />
+    <EntitySet Name="Detalle_venta" EntityType="Self.Detalle_venta" />
+    <EntitySet Name="Ingresoes" EntityType="Self.Ingreso" />
+    <EntitySet Name="Presentacions" EntityType="Self.Presentacion" />
+    <EntitySet Name="Proveedors" EntityType="Self.Proveedor" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Trabajadors" EntityType="Self.Trabajador" />
+    <EntitySet Name="Ventas" EntityType="Self.Venta" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Proyecto2Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Proyecto2Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
